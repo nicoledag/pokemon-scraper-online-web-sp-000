@@ -22,7 +22,7 @@ class Pokemon
     Pokemon.new(id: results[0],
                 name: results[1],
                 type: results[2],
-                hp: pokemon_data[3],
+                hp: results[3],
                 db: db)
   end
 
