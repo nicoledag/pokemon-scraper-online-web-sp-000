@@ -2,12 +2,13 @@ require 'pry'
 
 class Pokemon
 
-  attr_accessor :id, :name, :type, :db
+  attr_accessor :id, :name, :type, :db, :hp
 
-  def initialize(id:, name:, type:, db:)
+  def initialize(id:, name:, type:, db:, hp: nil)
     @id = id
     @name = name
     @type = type
+    @hp = hp
   end
 
 
@@ -21,12 +22,13 @@ class Pokemon
     Pokemon.new(id: results[0],
                 name: results[1],
                 type: results[2],
+                hp: pokemon_data[3],
                 db: db)
   end
 
-  # def alter_hp(update_hp, db)
-  #   db.execute("UPDATE pokemon SET hp = ? WHERE id = ?", update_hp, self.id)
-  # end
-  #
+  def alter_hp(update_hp, db)
+    db.execute("UPDATE pokemon SET hp = ? WHERE id = ?", update_hp, self.id)
+  end
+
 
 end
